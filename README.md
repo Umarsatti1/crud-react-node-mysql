@@ -129,7 +129,7 @@ docker push <AWS_ID>.dkr.ecr.us-east-1.amazonaws.com/node-crud-backend:latest
 - Port Mapping: 3001
 - Environment:
 ```env
-DB_HOST=<your-rds-endpoint>
+DB_HOST=crudgames-db.xxxxxx.region.rds.amazonaws.com (Your RDS endpoint)
 DB_PORT=3306
 DB_USER=admin
 DB_PASSWORD=YourSecurePassword123!
