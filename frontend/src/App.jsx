@@ -5,7 +5,7 @@ import Card from './components/card';
 
 function App() {
   //const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001'; -> For Local
-  const baseUrl = ''; //When deploying to ECS
+  const baseUrl = ''; //When deploying to AWS ECS
 
   const [values, setValues] = useState({});
   const [games, setGames] = useState([]);
