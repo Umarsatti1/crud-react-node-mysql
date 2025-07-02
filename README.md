@@ -175,6 +175,7 @@ Visit the ALB DNS to access the deployed CRUD application via browser.
 
 - Delete ECS services
 - Delete task definitions
+- Delete Cloud Map configuration (Route 53)
 - Delete ALB and target groups
 - Delete RDS instance
 
