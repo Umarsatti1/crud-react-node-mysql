@@ -21,11 +21,10 @@ This guide walks through deploying a full-stack **CRUD application** using **Rea
 ```bash
 docker build -t my-backend .
 docker run -d --name backend -p 3001:3001 \
-  -e NODE_ENV=production \
   -e DB_HOST=host.docker.internal \
   -e DB_PORT=3306 \
   -e DB_USER=root \
-  -e DB_PASSWORD=Sirsatti123! \
+  -e DB_PASSWORD=yourpassword \
   -e DB_DATABASE=movies_db \
   my-backend
 ```
@@ -72,7 +71,7 @@ DB_PORT=3306
    - Version: 8.0.36
    - Identifier: `movie-db-instance`
    - Username: `admin`
-   - Password: `YourSecurePassword123!`
+   - Password: `yourpassword`
    - Subnet Group: `movie-app-subnet-group`
    - DB Name: `movies_db`
    - Public Access: No (or Yes for testing)
@@ -82,7 +81,7 @@ DB_PORT=3306
 ```env
 DB_HOST=movie-db-instance.xxxxxx.region.rds.amazonaws.com
 DB_USER=admin
-DB_PASSWORD=YourSecurePassword123!
+DB_PASSWORD=yourpassword
 DB_DATABASE=movies_db
 DB_PORT=3306
 ```
@@ -130,7 +129,7 @@ docker push <AWS_ID>.dkr.ecr.us-east-1.amazonaws.com/node-crud-backend:latest
 DB_HOST=movie-db-instance.xxxxxx.region.rds.amazonaws.com (Your RDS endpoint)
 DB_PORT=3306
 DB_USER=admin
-DB_PASSWORD=YourSecurePassword123!
+DB_PASSWORD=yourpassword
 DB_DATABASE=movies_db
 ```
 
