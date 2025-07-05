@@ -80,7 +80,7 @@ DB_PORT=3306
 **Environment Variables:**
 ```env
 DB_HOST=movie-db-instance.xxxxxx.region.rds.amazonaws.com
-DB_USER=root
+DB_USER=admin
 DB_PASSWORD=yourpassword
 DB_DATABASE=movies_db
 DB_PORT=3306
@@ -128,7 +128,7 @@ docker push <AWS_ID>.dkr.ecr.us-east-1.amazonaws.com/node-crud-backend:latest
 ```env
 DB_HOST=movie-db-instance.xxxxxx.region.rds.amazonaws.com (Your RDS endpoint)
 DB_PORT=3306
-DB_USER=root
+DB_USER=admin
 DB_PASSWORD=yourpassword
 DB_DATABASE=movies_db
 ```
