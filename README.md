@@ -2,8 +2,6 @@
 
 This guide walks through deploying a full-stack **CRUD application** using **React**, **Node.js + Express**, **MySQL**, and **Docker** — all orchestrated on **AWS ECS** with **RDS**, **ALB**, and **Fargate**.
 
-🔗 Original Source Repo: [react-node-mysql-crud](https://github.com/nailtonvital/react-node-mysql-crud)
-
 ---
 
 ## Tech Stack
@@ -28,7 +26,7 @@ docker run -d --name backend -p 3001:3001 \
   -e DB_PORT=3306 \
   -e DB_USER=root \
   -e DB_PASSWORD=Sirsatti123! \
-  -e DB_NAME=crudgames \
+  -e DB_DATABASE=movies_db \
   my-backend
 ```
 
@@ -52,7 +50,7 @@ VITE_API_URL=http://localhost:3001
 DB_HOST=mysql
 DB_USER=myappuser
 DB_PASSWORD=yourpassword
-DB_DATABASE=crudgames
+DB_DATABASE=movies_db
 DB_PORT=3306
 ```
 
@@ -72,20 +70,20 @@ DB_PORT=3306
 1. Create a **DB Subnet Group**
 2. Create a **MySQL Instance**:
    - Version: 8.0.36
-   - Identifier: `crudgames-db`
+   - Identifier: `movie-db-instance`
    - Username: `admin`
    - Password: `YourSecurePassword123!`
-   - Subnet Group: `crud-app-subnet-group`
-   - DB Name: `crudgames`
+   - Subnet Group: `movie-app-subnet-group`
+   - DB Name: `movies_db`
    - Public Access: No (or Yes for testing)
    - Security Group: `RDS-SG`
 
 **Environment Variables:**
 ```env
-DB_HOST=crudgames-db.xxxxxx.region.rds.amazonaws.com
+DB_HOST=movie-db-instance.xxxxxx.region.rds.amazonaws.com
 DB_USER=admin
 DB_PASSWORD=YourSecurePassword123!
-DB_NAME=crudgames
+DB_DATABASE=movies_db
 DB_PORT=3306
 ```
 
@@ -129,11 +127,11 @@ docker push <AWS_ID>.dkr.ecr.us-east-1.amazonaws.com/node-crud-backend:latest
 - Port Mapping: 3001
 - Environment:
 ```env
-DB_HOST=crudgames-db.xxxxxx.region.rds.amazonaws.com (Your RDS endpoint)
+DB_HOST=movie-db-instance.xxxxxx.region.rds.amazonaws.com (Your RDS endpoint)
 DB_PORT=3306
 DB_USER=admin
 DB_PASSWORD=YourSecurePassword123!
-DB_NAME=crudgames
+DB_DATABASE=movies_db
 ```
 
 ---
@@ -142,7 +140,7 @@ DB_NAME=crudgames
 
 Create path-based routing:
 - `/register/*`
-- `/games/*`
+- `/movies/*`
 - `/edit/*`
 - `/delete/*`
 
@@ -150,7 +148,7 @@ Create path-based routing:
 
 ### Step 7: ECS Services & Cluster
 
-1. **Cluster**: `crud-app-cluster` (Fargate)
+1. **Cluster**: `movie-app-cluster` (Fargate)
 2. **Frontend Service**:
    - Task: `frontend-task`
    - Target Group: `frontend-tg`
