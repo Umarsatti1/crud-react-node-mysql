@@ -1,12 +1,10 @@
-// App.jsx (frontend)
-
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import MovieCard from './components/MovieCard';
 import DatePicker from "./components/DatePicker"
 
 function App() {
-  const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+  const baseUrl = ''; //When deploying to AWS ECS
 
   const [values, setValues] = useState({
     name: "",
